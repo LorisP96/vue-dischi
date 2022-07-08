@@ -1,9 +1,9 @@
 <template>
   <div class="card">
-    <div class="card-mini album-image">
+    <div class="album-image">
       <img :src="SingleCard.poster" :alt="SingleCard.genre">
     </div>
-    <div class="card-mini album-info">
+    <div class="album-info">
           <h2>{{ SingleCard.title }}</h2>
           <div class="artist">{{ SingleCard.author }}</div>
           <div class="year">{{ SingleCard.year }}</div>
@@ -30,17 +30,15 @@ export default {
         margin-bottom: 20px;
         background-color: $main-color;
         margin: 20px;
-        .card-mini {
-          width: 100%;
-          aspect-ratio: 1/1;
-        }
         .album-image {
           display: flex;
           align-items: center;
           justify-content: center;
           padding: 20px;
+          aspect-ratio: 1/1;
           img {
             width: 100%;
+            height: 100%;
             object-fit: cover;
           }
         }

@@ -1,6 +1,7 @@
 <template>
   <section>
     <div class="container">
+      <div v-if="albumArray.length < 10" class="loader">Loading...</div>
       <CardComponents v-for="album, index in albumArray" :key="index" :SingleCard="album" />
     </div>
   </section>
@@ -18,11 +19,16 @@ export default {
       albumArray: [],
     }
   },
-  mounted() {
-    axios.get('https://flynn.boolean.careers/exercises/api/array/music')
+  methods: {
+    getApi() {
+      axios.get('https://flynn.boolean.careers/exercises/api/array/music')
     .then((response) => {
       this.albumArray = response.data.response;
     })
+    }
+  },
+  mounted() {
+    setTimeout(this.getApi, 3000)
   }
 };
 </script>
@@ -33,6 +39,7 @@ export default {
   section {
     background-color: $bg-color;
     width: 100%;
+    min-height: calc(100vh - 70px);
     padding-top: 80px;
     .container {
       width: 70%;
@@ -41,6 +48,15 @@ export default {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+      .loader {
+        width: 40%;
+        margin: 0 auto;
+        height: 300px;
+        color: white;
+        background-color: $main-color;
+        font-weight: 700;
+        font-size: 45px;
+      }
     }
   }
 </style>

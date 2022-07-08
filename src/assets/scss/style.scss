@@ -1,0 +1,13 @@
+@import '~@fontsource/montserrat/index.css';
+@import '~@fontsource/montserrat/700.css';
+
+@import './vars.scss';
+
+// reset
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+

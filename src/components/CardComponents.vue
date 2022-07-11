@@ -4,7 +4,7 @@
       <img :src="SingleCard.poster" :alt="SingleCard.genre">
     </div>
     <div class="album-info">
-          <h2>{{ SingleCard.title }}</h2>
+          <h3>{{ SingleCard.title }}</h3>
           <div class="artist">{{ SingleCard.author }}</div>
           <div class="year">{{ SingleCard.year }}</div>
     </div>
@@ -46,7 +46,9 @@ export default {
           color: grey;
           text-align: center;
           padding: 10px;
-          h2 {
+          white-space: wrap;
+          overflow: hidden;
+          h3 {
             padding: 10px 0 20px;
             color: white;
           }

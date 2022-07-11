@@ -1,35 +1,23 @@
 <template>
   <section>
     <div class="container">
-      <div v-if="albumArray.length < 10" class="loader">Loading...</div>
-      <CardComponents v-for="album, index in albumArray" :key="index" :SingleCard="album" />
+      <div v-if="albumArray.length < 10" class="loader">Loading. . .</div>
+      <CardComponents v-for="album, index in filteredArray" :key="index" :SingleCard="album" />
     </div>
   </section>
 </template>
 
 <script>
 import CardComponents from '../components/CardComponents.vue';
-import axios from 'axios';
+// import axios from 'axios';
 
 export default {
   name: "MainComponents",
   components: { CardComponents },
-  data() {
-    return {
-      albumArray: [],
-    }
+  props: {
+    filteredArray: Array,
+    albumArray: Array
   },
-  methods: {
-    getApi() {
-      axios.get('https://flynn.boolean.careers/exercises/api/array/music')
-    .then((response) => {
-      this.albumArray = response.data.response;
-    })
-    }
-  },
-  mounted() {
-    setTimeout(this.getApi, 3000)
-  }
 };
 </script>
 
@@ -40,7 +28,7 @@ export default {
     background-color: $bg-color;
     width: 100%;
     min-height: calc(100vh - 70px);
-    padding-top: 80px;
+    padding-top: 40px;
     .container {
       width: 70%;
       height: 100%;
@@ -56,6 +44,8 @@ export default {
         background-color: $main-color;
         font-weight: 700;
         font-size: 45px;
+        border-radius: 10px;
+        padding: 40px;
       }
     }
   }
